@@ -14,25 +14,25 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "4.6.3"
+      "version": "5.0.4"
     },
     {
       "type": "panel",
       "id": "graph",
       "name": "Graph",
-      "version": ""
+      "version": "5.0.0"
     },
     {
       "type": "datasource",
       "id": "prometheus",
       "name": "Prometheus",
-      "version": "1.0.0"
+      "version": "5.0.0"
     },
     {
       "type": "panel",
       "id": "singlestat",
       "name": "Singlestat",
-      "version": ""
+      "version": "5.0.0"
     }
   ],
   "annotations": {
@@ -51,621 +51,872 @@
   "editable": true,
   "gnetId": 4698,
   "graphTooltip": 0,
-  "hideControls": false,
   "id": null,
   "links": [],
-  "refresh": false,
-  "rows": [
+  "panels": [
     {
-      "collapse": false,
-      "height": 279,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "hideTimeOverride": false,
-          "id": 2,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "hideEmpty": false,
-            "hideZero": false,
-            "max": true,
-            "min": true,
-            "rightSide": false,
-            "show": true,
-            "total": true,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [
-            {
-              "alias": "2xx",
-              "color": "#508642"
-            },
-            {
-              "alias": "3xx",
-              "color": "#0a437c"
-            },
-            {
-              "alias": "4xx",
-              "color": "#e5ac0e"
-            },
-            {
-              "alias": "5xx",
-              "color": "#bf1b00"
-            }
-          ],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_2xx[1m]))",
-              "format": "time_series",
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "2xx",
-              "refId": "E"
-            },
-            {
-              "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_3xx[1m]))",
-              "format": "time_series",
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "3xx",
-              "refId": "A"
-            },
-            {
-              "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_4xx[1m]))",
-              "format": "time_series",
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "4xx",
-              "refId": "B"
-            },
-            {
-              "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_5xx[1m]))",
-              "format": "time_series",
-              "interval": "",
-              "intervalFactor": 2,
-              "legendFormat": "5xx",
-              "refId": "D"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "API Requests",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "transparent": false,
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "RPM",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": "RPM",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 6,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.5\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.5 quantile",
-              "refId": "A"
-            },
-            {
-              "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.9\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.9 quantile",
-              "refId": "B"
-            },
-            {
-              "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.99\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.99 quantile",
-              "refId": "C"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Downstream Connections Length",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "milliseconds",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 5,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": true,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_http1_total[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "HTTP/1.1",
-              "refId": "A"
-            },
-            {
-              "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_http2_total[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "HTTP/2",
-              "refId": "B"
-            },
-            {
-              "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_websocket_total[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "WebSocket",
-              "refId": "C"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Downstream Connections",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": "RPM",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        },
-        {
-          "cacheTimeout": null,
-          "colorBackground": false,
-          "colorValue": false,
-          "colors": [
-            "#299c46",
-            "rgba(237, 129, 40, 0.89)",
-            "#d44a3a"
-          ],
-          "datasource": "${DS_PROMETHEUS}",
-          "format": "none",
-          "gauge": {
-            "maxValue": 100,
-            "minValue": 0,
-            "show": false,
-            "thresholdLabels": false,
-            "thresholdMarkers": true
-          },
-          "id": 4,
-          "interval": null,
-          "links": [],
-          "mappingType": 1,
-          "mappingTypes": [
-            {
-              "name": "value to text",
-              "value": 1
-            },
-            {
-              "name": "range to text",
-              "value": 2
-            }
-          ],
-          "maxDataPoints": 100,
-          "nullPointMode": "connected",
-          "nullText": null,
-          "postfix": "",
-          "postfixFontSize": "50%",
-          "prefix": "",
-          "prefixFontSize": "50%",
-          "rangeMaps": [
-            {
-              "from": "null",
-              "text": "N/A",
-              "to": "null"
-            }
-          ],
-          "span": 2,
-          "sparkline": {
-            "fillColor": "rgba(31, 118, 189, 0.18)",
-            "full": false,
-            "lineColor": "rgb(31, 120, 193)",
-            "show": false
-          },
-          "tableColumn": "",
-          "targets": [
-            {
-              "expr": "envoy_cluster_manager_total_clusters",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "refId": "A"
-            }
-          ],
-          "thresholds": "",
-          "title": "Registered Services",
-          "type": "singlestat",
-          "valueFontSize": "80%",
-          "valueMaps": [
-            {
-              "op": "=",
-              "text": "N/A",
-              "value": "null"
-            }
-          ],
-          "valueName": "avg"
-        }
-      ],
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "panels": [],
       "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": true,
       "title": "Listener",
-      "titleSize": "h6"
+      "type": "row"
     },
     {
-      "collapse": false,
-      "height": 297,
-      "panels": [
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "hideTimeOverride": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 3,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.5\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.5 quantile",
-              "refId": "A"
-            },
-            {
-              "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.9\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.9 quantile",
-              "refId": "B"
-            },
-            {
-              "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.99\"}",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "0.99 quantile",
-              "refId": "C"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "External Auth Request Time",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": "milliseconds",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
+          "alias": "2xx",
+          "color": "#508642"
         },
         {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "id": 7,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": false,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": true,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null as zero",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "span": 12,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_total[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Total",
-              "refId": "A"
-            },
-            {
-              "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_cancelled[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Failed",
-              "refId": "B"
-            },
-            {
-              "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_timeout[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Timeout",
-              "refId": "C"
-            },
-            {
-              "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_pending_total[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Pending",
-              "refId": "D"
-            },
-            {
-              "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_retry[1m]))",
-              "format": "time_series",
-              "intervalFactor": 2,
-              "legendFormat": "Retry",
-              "refId": "E"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "External Auth Requests",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "RPM",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
+          "alias": "3xx",
+          "color": "#0a437c"
+        },
+        {
+          "alias": "4xx",
+          "color": "#e5ac0e"
+        },
+        {
+          "alias": "5xx",
+          "color": "#bf1b00"
         }
       ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_2xx[1m]))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "2xx",
+          "refId": "E"
+        },
+        {
+          "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_3xx[1m]))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "3xx",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_4xx[1m]))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "4xx",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(increase(envoy_listener_0_0_0_0_80_http_ingress_http_downstream_rq_5xx[1m]))",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "5xx",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "API Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "RPM",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": "RPM",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.5\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.5 quantile",
+          "refId": "A"
+        },
+        {
+          "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.9\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.9 quantile",
+          "refId": "B"
+        },
+        {
+          "expr": "envoy_listener_0_0_0_0_80_downstream_cx_length_ms{quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.99 quantile",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Downstream Connections Length",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "milliseconds",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 20,
+        "x": 0,
+        "y": 15
+      },
+      "id": 5,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_http1_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "HTTP/1.1",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_http2_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "HTTP/2",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(increase(envoy_http_ingress_http_downstream_cx_websocket_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "WebSocket",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Downstream Connections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "RPM",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 20,
+        "y": 15
+      },
+      "id": 4,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "envoy_cluster_manager_total_clusters",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Registered Services",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 10,
+      "panels": [],
       "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": true,
       "title": "External Auth",
-      "titleSize": "h6"
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 3,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.5\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.5 quantile",
+          "refId": "A"
+        },
+        {
+          "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.9\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.9 quantile",
+          "refId": "B"
+        },
+        {
+          "expr": "envoy_cluster_cluster_ext_auth_upstream_rq_time{quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.99 quantile",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External Auth Request Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "milliseconds",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 7,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Total",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_cancelled[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Failed",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_timeout[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Timeout",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_pending_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Pending",
+          "refId": "D"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_auth_upstream_rq_retry[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Retry",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External Auth Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "RPM",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 39
+      },
+      "id": 13,
+      "panels": [],
+      "title": "External Rate Limit",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "id": 14,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "envoy_cluster_cluster_ext_ratelimit_upstream_rq_time{quantile=\"0.5\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.5 quantile",
+          "refId": "A"
+        },
+        {
+          "expr": "envoy_cluster_cluster_ext_ratelimit_upstream_rq_time{quantile=\"0.9\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.9 quantile",
+          "refId": "B"
+        },
+        {
+          "expr": "envoy_cluster_cluster_ext_ratelimit_upstream_rq_time{quantile=\"0.99\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "0.99 quantile",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External Rate Limit Request Time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": null,
+          "format": "short",
+          "label": "milliseconds",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 15,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": true,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_ratelimit_upstream_rq_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Total",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_ratelimit_upstream_rq_cancelled[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Failed",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_ratelimit_upstream_rq_timeout[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Timeout",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_ratelimit_upstream_rq_pending_total[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Pending",
+          "refId": "D"
+        },
+        {
+          "expr": "sum(increase(envoy_cluster_cluster_ext_ratelimit_upstream_rq_retry[1m]))",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Retry",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "External Rate Limit Requests",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "RPM",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ]
     }
   ],
-  "schemaVersion": 14,
+  "refresh": false,
+  "schemaVersion": 16,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-2h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -695,6 +946,6 @@
   },
   "timezone": "",
   "title": "Ambassador",
-  "version": 13,
-  "description": "getambassador.io API gateway dashboard"
+  "version": 18,
+  "description": "Ambassador API Gateway metrics"
 }
