@@ -1,0 +1,6 @@
+#ignore all kind of files
+*
+#except json files
+!*.json
+#except readme files
+!README.md
