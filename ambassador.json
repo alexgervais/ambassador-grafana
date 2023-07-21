@@ -1488,7 +1488,7 @@
         {
           "$$hashKey": "object:1677",
           "format": "short",
-          "label": "RPM",
+          "label": "RPS",
           "logBase": 1,
           "min": "0",
           "show": true
@@ -2348,7 +2348,7 @@
         {
           "$$hashKey": "object:3070",
           "format": "short",
-          "label": "RPM",
+          "label": "RPS",
           "logBase": 1,
           "show": true
         },
@@ -2591,7 +2591,7 @@
         {
           "$$hashKey": "object:3070",
           "format": "short",
-          "label": "RPM",
+          "label": "RPS",
           "logBase": 1,
           "show": true
         },
